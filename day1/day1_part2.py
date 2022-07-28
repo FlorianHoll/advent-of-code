@@ -1,4 +1,4 @@
-"""Day 2 of Advent of Code without help of packages.
+"""Day 1, part 2 of Advent of Code without help of packages.
 
 Considering every single measurement isn't as useful as you expected:
 there's just too much noise in the data.

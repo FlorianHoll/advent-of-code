@@ -23,7 +23,7 @@ How many measurements are larger than the previous measurement?
 
 def read_data():
     """Read the data."""
-    with open("../data/day_1_input.txt", "r") as txt:
+    with open("../data/day1_input.txt", "r") as txt:
         data = txt.read().replace("\n", ",").split(",")
     data = [int(s) for s in data[:-1]]
     return data
