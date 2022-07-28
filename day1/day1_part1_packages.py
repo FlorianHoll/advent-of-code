@@ -22,7 +22,7 @@ How many measurements are larger than the previous measurement?
 import numpy as np
 import pandas as pd
 
-data = pd.read_csv("../data/day_1_input.txt", header=None)
+data = pd.read_csv("../data/day1_input.txt", header=None)
 data = data.values.flatten()
 numbers = data.copy()
 following_numbers = np.roll(data, -1)
