@@ -1,30 +1,27 @@
 """Test the solution."""
 # pylint: skip-file
-import numpy as np
 import pytest
 
-from day3.day3_part1_numpy import binary_to_decimal
-from day3.day3_part1_numpy import find_most_common_bit
-from day3.day3_part1_numpy import index_vertically
-from day3.day3_part1_numpy import invert_integers
-from day3.day3_part1_numpy import list_to_binary_string
+from day3.part1.day3_part1_pure_python import binary_to_decimal
+from day3.part1.day3_part1_pure_python import find_most_common_bit
+from day3.part1.day3_part1_pure_python import index_vertically
+from day3.part1.day3_part1_pure_python import invert_integers
+from day3.part1.day3_part1_pure_python import list_to_binary_string
 
-DATA_FROM_EXAMPLE = np.array(
-    [
-        "00100",
-        "11110",
-        "10110",
-        "10111",
-        "10101",
-        "01111",
-        "00111",
-        "11100",
-        "10000",
-        "11001",
-        "00010",
-        "01010",
-    ]
-)
+DATA_FROM_EXAMPLE = [
+    "00100",
+    "11110",
+    "10110",
+    "10111",
+    "10101",
+    "01111",
+    "00111",
+    "11100",
+    "10000",
+    "11001",
+    "00010",
+    "01010",
+]
 
 
 # First, test the binary to decimal converter. We will use
@@ -50,15 +47,17 @@ def test_binary_to_decimal_converter(binary):
 def test_vertical_indexing():
     """Test if a list of binary strings is correctly vertically indexed."""
     result = index_vertically(DATA_FROM_EXAMPLE)
-    assert result.shape == (len(DATA_FROM_EXAMPLE), len(DATA_FROM_EXAMPLE[0]))
-    assert np.all(result[:, 0] == np.array([0, 1, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0]))
+    assert len(result) == len(DATA_FROM_EXAMPLE[0])
+    for result_string in result:
+        assert len(result_string) == len(DATA_FROM_EXAMPLE)
+    assert result[0] == [0, 1, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0]
 
 
 def test_most_common_bit():
     """Test if the calculated most common bit is correct."""
     vertically_indexed_data = index_vertically(DATA_FROM_EXAMPLE)
     result = find_most_common_bit(vertically_indexed_data)
-    assert np.all(result == np.array([1, 0, 1, 1, 0]))
+    assert result == [1, 0, 1, 1, 0]
 
 
 @pytest.mark.parametrize(
@@ -77,12 +76,12 @@ def test_conversion_to_binary_string(num_list, binary):
 @pytest.mark.parametrize(
     "original_list, inverted_list",
     [
-        (np.array([1, 0, 1, 0]), np.array([0, 1, 0, 1])),
-        (np.array([1, 0, 0, 0]), np.array([0, 1, 1, 1])),
-        (np.array([1, 0, 1, 1, 1, 1, 1, 1, 0]), np.array([0, 1, 0, 0, 0, 0, 0, 0, 1])),
+        ([1, 0, 1, 0], [0, 1, 0, 1]),
+        ([1, 0, 0, 0], [0, 1, 1, 1]),
+        ([1, 0, 1, 1, 1, 1, 1, 1, 0], [0, 1, 0, 0, 0, 0, 0, 0, 1]),
     ],
 )
 def test_inversion_of_list(original_list, inverted_list):
     """Test if the inversion of lists works."""
     result = invert_integers(original_list)
-    assert np.all(result == inverted_list)
+    assert result == inverted_list

@@ -73,9 +73,9 @@ What is the life support rating of the submarine?
 """
 import numpy as np
 
-from day3.day3_part1_numpy import index_vertically
-from day3.day3_part1_numpy import list_to_binary_string
-from day3.day3_part1_numpy import read_data
+from day3.part1.day3_part1_numpy import index_vertically
+from day3.part1.day3_part1_numpy import list_to_binary_string
+from day3.part1.day3_part1_numpy import read_data
 
 
 class BitCriterionChooser:

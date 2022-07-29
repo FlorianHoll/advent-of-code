@@ -1,7 +1,7 @@
 """Test the numpy based solution of day3, part 2."""
 import numpy as np
 
-from day3.day3_part1_numpy import index_vertically
+from day3.part1.day3_part1_numpy import index_vertically
 from day3.part2.day3_part2_numpy import BitCriterionChooser
 
 example_data = np.array(
