@@ -55,6 +55,8 @@ gamma rate and epsilon rate, then multiply them together. What is
 the power consumption of the submarine?
 (Be sure to represent your answer in decimal, not binary.)
 """
+from typing import Union
+
 import numpy as np
 
 
@@ -79,7 +81,7 @@ def binary_to_decimal(binary_number: str) -> int:
     return multiplied_values.sum()
 
 
-def index_vertically(input_data: np.ndarray) -> np.ndarray:
+def index_vertically(input_data: Union[np.ndarray, list[int]]) -> np.ndarray:
     """Index the data vertically (see instructions).
 
     :param input_data: An array of size N x M.
@@ -88,7 +90,9 @@ def index_vertically(input_data: np.ndarray) -> np.ndarray:
     return np.array([list(s) for s in input_data]).astype(int)
 
 
-def find_most_common_bit(input_data: np.ndarray) -> np.ndarray:
+def find_most_common_bit(
+    input_data: np.ndarray, index: Union[int, None] = None
+) -> np.ndarray:
     """Find the most common bit for each vertical position in a list.
 
     Since there are only ones and zeros in the lists, one
@@ -98,14 +102,20 @@ def find_most_common_bit(input_data: np.ndarray) -> np.ndarray:
     (mean > .5) as an integer, we therefore have the solution.
 
     :param input_data: The data as vertically indexed data.
-    :return: The most common bit of each vertical position.
-        The resulting array therefore same the same length as the
-        individual strings.
+    :param index: If passed, only the most common bit at a
+        specified index (i.e. a specified column) will be
+        returned.
+    :return: The most common bit or bits, depending on whether
+        an index was passed. If no index is passed, the resulting
+        array therefore same the same length as the individual strings.
     """
-    return (input_data.mean(axis=0) > 0.5).astype(int)
+    most_common_bits = (input_data.mean(axis=0) > 0.5).astype(int)
+    if index is None:
+        return most_common_bits
+    return most_common_bits[index]
 
 
-def list_to_binary_string(integer_list: list[int]) -> str:
+def list_to_binary_string(integer_list: np.ndarray) -> str:
     """Convert a list of integers to a string representing a binary."""
     bin_str = ""
     for integer in integer_list:
