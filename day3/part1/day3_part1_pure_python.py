@@ -60,7 +60,7 @@ from typing import Union
 
 def read_data():
     """Read the data."""
-    with open("../data/day3_input.txt", "r") as txt:
+    with open("../../data/day3_input.txt", "r") as txt:
         instructions = txt.read().replace("\n", ",").split(",")
     return instructions[:-1]
 
