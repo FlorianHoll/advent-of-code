@@ -128,7 +128,7 @@ EXAMPLE_BOARDS = [
 
 
 def test_game_works_for_example_data():
-    """Test if the solution alligns with the example."""
+    """Test if the solution aligns with the example."""
     game = LastOneWinsBingoGame(EXAMPLE_BOARDS, EXAMPLE_NUMBERS_TO_DRAW)
     winner, last_number = game.play()
     assert last_number == 13
