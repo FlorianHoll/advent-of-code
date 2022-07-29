@@ -50,7 +50,6 @@ repos:
               "--fail-under=8.5",
               "--disable=E0401,C0103,E1136"
           ]
-        exclude: "tests/"
 
   - repo: https://github.com/pycqa/pydocstyle
     rev: 6.1.1
