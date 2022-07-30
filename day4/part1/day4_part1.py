@@ -80,12 +80,11 @@ win first.
 What will your final score be if you choose that board?
 """
 from day4.part1._read_data import read_day4_data
-from day4.part1._read_data import read_test_data
-from day4.part1.bingo_game import BingoGame
+from day4.part1.bingo_game import FirstOneWinsBingoGame
 
 if __name__ == "__main__":
     boards, numbers_to_draw = read_day4_data()
-    game = BingoGame(boards, numbers_to_draw)
+    game = FirstOneWinsBingoGame(boards, numbers_to_draw)
     winner, last_number = game.play()
     sum_non_called = winner.get_sum_of_all_non_called_numbers()
     print(f"The result is {sum_non_called * last_number}.")
