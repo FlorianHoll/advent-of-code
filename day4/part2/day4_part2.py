@@ -16,11 +16,13 @@ a sum of unmarked numbers equal to 148 for a final score of 148 * 13 = 1924.
 Figure out which board will win last. Once it wins,
 what would its final score be?
 """
-from day4.part1._read_data import read_day4_data
+from day4.part1.bingo_board import BingoBoard
 from day4.part1.bingo_game import LastOneWinsBingoGame
+from day4.part1.read_data import read_day4_data
 
 if __name__ == "__main__":
     boards, numbers_to_draw = read_day4_data()
+    boards = [BingoBoard(board) for board in boards]
     game = LastOneWinsBingoGame(boards, numbers_to_draw)
     winner, last_number = game.play()
     sum_non_called = winner.get_sum_of_all_non_called_numbers()

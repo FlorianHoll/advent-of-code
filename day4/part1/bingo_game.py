@@ -12,34 +12,18 @@ class BingoGame:
     after a number, the winner is returned along with the last called
     number.
 
-    :param bingo_boards: The bingo boards as a list of np.ndarray
-        where each array represents one bingo board.
+    :param bingo_boards: The bingo boards as a list of BingoBoard objects.
     :param numbers_drawn: The drawn numbers as a 1-dimensional array.
     """
 
     def __init__(
-        self, bingo_boards: list[np.ndarray], numbers_drawn: np.ndarray
+        self, bingo_boards: list[BingoBoard], numbers_drawn: np.ndarray
     ) -> None:
         """Initialize the bingo game."""
         self.bingo_boards = []
-        for bingo_board in bingo_boards:
-            self.bingo_boards.append(BingoBoard(bingo_board))
+        self.bingo_boards = bingo_boards
         self.numbers_to_draw = numbers_drawn
         self.winner = None
-
-    def _game_is_finished(self) -> bool:
-        """Set the finish condition of the game.
-
-        Since the condition differs from part1 of day4 to the
-        second task, this method has to be implemented by the
-        children classes.
-        """
-        pass
-
-    def _get_winner(self) -> BingoBoard:
-        """Get the one who called bingo."""
-        winner_index = [board.called_bingo for board in self.bingo_boards].index(True)
-        return self.bingo_boards[winner_index]
 
     def play(self) -> tuple[BingoBoard, int]:
         """Play the game.
@@ -69,17 +53,35 @@ class BingoGame:
 
         This is important for the second part of the puzzle. Here,
         we need the last board to win. Sorting out all finished
-        boards is the easiest method to do find this board.
+        boards is the easiest method to do find this board in the end.
         """
         self.bingo_boards = [
             board for board in self.bingo_boards if not board.called_bingo
         ]
+
+    def _game_is_finished(self) -> bool:
+        """Set the finish condition of the game.
+
+        Since the condition differs from part1 of day4 to the
+        second task, this method has to be implemented by the
+        children classes.
+        """
+        pass
+
+    def _get_winner(self) -> BingoBoard:
+        """Get the one who called bingo."""
+        winner_index = [board.called_bingo for board in self.bingo_boards].index(True)
+        return self.bingo_boards[winner_index]
 
 
 class FirstOneWinsBingoGame(BingoGame):
     """A bingo game where the first player to call bingo ends the game."""
 
     def _game_is_finished(self) -> bool:
+        """Return if the game is finished.
+
+        The game is finished as soon as the first player called bingo.
+        """
         return self._someone_has_bingo()
 
     def _someone_has_bingo(self) -> bool:
@@ -91,6 +93,10 @@ class LastOneWinsBingoGame(BingoGame):
     """A bingo game where the last player to call bingo ends the game."""
 
     def _game_is_finished(self) -> bool:
+        """Return if the game is finished.
+
+        The game is finished as soon as everyone called bingo.
+        """
         return self._everyone_has_bingo()
 
     def _everyone_has_bingo(self) -> bool:
