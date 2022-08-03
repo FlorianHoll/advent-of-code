@@ -24,8 +24,3 @@ def read_day5_data(input_file: str):
     # Reshape to be equally sized instruction arrays.
     vent_data = np.array(instructions).reshape((nr_instructions, 2, 2))
     return vent_data
-
-
-if __name__ == "__main__":
-    vent_data = read_day5_data()
-    assert vent_data.shape[-2:] == (2, 2)
