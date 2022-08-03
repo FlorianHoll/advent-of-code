@@ -11,7 +11,7 @@ def read_day5_data(input_file: str):
     In order to use them, the blocks have to be split first; then,
     the blocks are indexed and formatted.
     """
-    with open(f"../../data/{input_file}.txt", "r") as txt:
+    with open(f"../../data/{input_file}", "r") as txt:
         instructions = txt.read()
     # Find the position where the numbers end and the bingo boards begin.
 
