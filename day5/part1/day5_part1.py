@@ -60,8 +60,8 @@ a total of 5 points.
 Consider only horizontal and vertical lines.
 At how many points do at least two lines overlap?
 """
-from day5.part1.read_data import read_day5_data
-from day5.part1.vent_map import VentMap
+from day5.read_data import read_day5_data
+from day5.vent_map import VentMap
 
 if __name__ == "__main__":
     vent_locations = read_day5_data("day5_input.txt")

@@ -1,7 +1,7 @@
 """A vent map that represents the location of the vents."""
 import numpy as np
 
-import day5.part1.vent_location as vl
+import day5.vent_location as vl
 
 
 class VentMap:
