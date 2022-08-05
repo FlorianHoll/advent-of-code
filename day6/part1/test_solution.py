@@ -1,6 +1,6 @@
 """Test the solution."""
 # pylint: skip-file
-from day6.fish_population import FishPopulation
+from day6.part1.fish_population import FishPopulation
 
 
 def test_new_fish_logic_works():
