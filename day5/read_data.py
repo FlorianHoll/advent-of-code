@@ -1,4 +1,4 @@
-"""Read in the data."""
+"""Read in the data for day 5."""
 import numpy as np
 
 
@@ -13,14 +13,14 @@ def read_day5_data(input_file: str):
     """
     with open(f"../../data/{input_file}", "r") as txt:
         instructions = txt.read()
-    # Find the position where the numbers end and the bingo boards begin.
 
-    # Index and format bingo boards.
+    # Format vent locations.
     instructions = instructions.replace("\n", ",").replace(" -> ", ",").split(",")
+
     # Remove empty values that result due to linebreaks.
     instructions = [int(st) for st in instructions if st.isnumeric()]
     nr_instructions = len(instructions) // (2 * 2)  # instructions are all 2 x 2.
 
-    # Reshape to be equally sized instruction arrays.
+    # Reshape to be equally sized coordinate arrays.
     vent_data = np.array(instructions).reshape((nr_instructions, 2, 2))
     return vent_data
