@@ -77,7 +77,7 @@ After 80 days, there would be a total of 5934.
 Find a way to simulate lanternfish.
 How many lanternfish would there be after 80 days?
 """
-from day6.fish_population import FishPopulation
+from day6.part1.fish_population import FishPopulation
 from day6.read_data import read_day6_data
 
 if __name__ == "__main__":
