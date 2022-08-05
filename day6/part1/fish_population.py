@@ -1,5 +1,5 @@
 """A population of fish."""
-from day6.fish import Lanternfish
+from day6.part1.fish import Lanternfish
 
 
 class FishPopulation:
