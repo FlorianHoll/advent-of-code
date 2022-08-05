@@ -24,23 +24,5 @@ def test_game_works_for_example_data():
             assert population.show_all_days() == [1, 2, 1, 6, 0, 8]
         if day == 2:
             assert population.show_all_days() == [0, 1, 0, 5, 6, 7, 8]
-        if day == 10:
-            assert population.show_all_days() == [
-                6,
-                0,
-                6,
-                4,
-                5,
-                6,
-                0,
-                1,
-                1,
-                2,
-                6,
-                7,
-                8,
-                8,
-                8,
-            ]
     result = population.number_of_fish
     assert result == 5934
